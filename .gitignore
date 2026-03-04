@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+.next/
+VersionA/node_modules/
+VersionA/.next/
