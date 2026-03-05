@@ -81,7 +81,7 @@ export function ContactForm() {
         <div>
           <h2
             id="contacto-heading"
-            className="text-3xl font-semibold tracking-tight text-[var(--color-primary)]"
+            className="text-3xl font-semibold tracking-tight text-[var(--color-text]"
           >
             Hablemos sobre tu próximo curso
           </h2>

@@ -96,7 +96,7 @@ export function CourseGrid({
               viewBox="0 0 20 20"
               aria-hidden="true"
               className={`h-4 w-4 text-[var(--color-text)] transition-transform ${
-                isOpen ? "rotate-180" : ""
+                isOpen ? "" : "rotate-180"
               }`}
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

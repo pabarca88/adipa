@@ -15,6 +15,7 @@
   --bg-radial: rgba(112, 78, 253, 0.1);
   --bg-grad-start: #f7f5fb;
   --bg-grad-end: #f1eef8;
+  --bg-white: rgba(255, 255, 255, 0.85);
 }
 
 [data-theme="dark"] {
@@ -31,6 +32,7 @@
   --bg-radial: rgba(143, 121, 255, 0.18);
   --bg-grad-start: #0f1324;
   --bg-grad-end: #0b0f1c;
+    --bg-white: rgba(69, 58, 128, 0.85);
 }
 
 * {

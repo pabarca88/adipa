@@ -1,5 +1,5 @@
-import type { CSSProperties } from "react";
 import type { Course } from "@/data/courses";
+import type { CSSProperties } from "react";
 
 interface CourseCardProps {
   course: Course;
@@ -46,7 +46,7 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-black/10 to-transparent" />
         <div className="absolute inset-0 flex items-start justify-between p-4">
-          <span className="rounded-full bg-white/85 px-2.5 py-1 text-[10px] font-semibold uppercase text-[var(--color-primary)]">
+          <span className="rounded-full bg-[var(--bg-white)] px-2.5 py-1 text-[10px] font-semibold uppercase text-[var(--color-text)]">
             {course.category}
           </span>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--color-primary)] px-2.5 py-1 text-[10px] font-semibold text-white">
@@ -61,7 +61,7 @@ export function CourseCard({ course, index = 0 }: CourseCardProps) {
 
       <div className="flex flex-1 flex-col p-4">
         <div className="flex-1">
-          <p className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-primary)]">
+          <p className="inline-flex items-center gap-1.5 text-xs font-medium text-[var(--color-accent)]">
             <svg
               viewBox="0 0 20 20"
               aria-hidden="true"

@@ -22,7 +22,7 @@ export function CategoryFilter({
         </p>
         <h2
           id="categorias-heading"
-          className="mt-2 text-xl font-semibold leading-7 tracking-tight text-[var(--color-primary)]"
+          className="mt-2 text-xl font-semibold leading-6 tracking-tight text-[var(--color-text)]"
         >
           Cursos que te permitirán potenciar tu carrera.
         </h2>
