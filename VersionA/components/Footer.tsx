@@ -67,7 +67,7 @@ export function Footer() {
 
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-10">
           <div>
-            <p className="text-sm font-semibold text-[var(--color-text)]">Links</p>
+            <h3 className="text-sm font-semibold text-[var(--color-text)]">Links</h3>
             <ul className="mt-3 space-y-2">
               {footerLinks.map((link) => (
                 <li key={link}>
@@ -83,7 +83,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-semibold text-[var(--color-text)]">Redes</p>
+            <h3 className="text-sm font-semibold text-[var(--color-text)]">Redes</h3>
             <ul className="mt-3 flex items-center gap-3">
               {socialLinks.map((link) => (
                 <li key={link.label}>

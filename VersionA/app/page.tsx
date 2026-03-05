@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { categories, courses, type Category } from "@/data/courses";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export type SortOption =
   | "Todos"
@@ -39,6 +39,8 @@ function parseCourseDate(value: string) {
 export default function HomePage() {
   const [selectedCategory, setSelectedCategory] = useState<Category>("Todos");
   const [selectedSort, setSelectedSort] = useState<SortOption>("Todos");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [shouldSnapToGrid, setShouldSnapToGrid] = useState(false);
 
   const filteredCourses =
     selectedCategory === "Todos"
@@ -66,8 +68,38 @@ export default function HomePage() {
     }
   });
 
+  const PAGE_SIZE = 6;
+  const totalPages = Math.max(1, Math.ceil(sortedCourses.length / PAGE_SIZE));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const paginatedCourses = sortedCourses.slice(
+    (safeCurrentPage - 1) * PAGE_SIZE,
+    safeCurrentPage * PAGE_SIZE,
+  );
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory, selectedSort]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
+
+  useEffect(() => {
+    if (!shouldSnapToGrid) return;
+
+    const section = document.getElementById("cursos");
+    if (section) {
+      const offset = 96;
+      const top = section.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+    setShouldSnapToGrid(false);
+  }, [safeCurrentPage, shouldSnapToGrid]);
+
   return (
-    <main>
+    <main id="contenido-principal" tabIndex={-1}>
       <Header />
       <Hero />
       <section className="mx-auto mt-8 grid max-w-7xl gap-6 px-4 sm:px-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:px-8">
@@ -77,9 +109,15 @@ export default function HomePage() {
           onSelect={setSelectedCategory}
         />
         <CourseGrid
-          courses={sortedCourses}
+          courses={paginatedCourses}
           selectedSort={selectedSort}
           onSortChange={setSelectedSort}
+          currentPage={safeCurrentPage}
+          totalPages={totalPages}
+          onPageChange={(page) => {
+            setCurrentPage(page);
+            setShouldSnapToGrid(true);
+          }}
         />
       </section>
       <section className="mx-auto mt-6 max-w-7xl px-4 sm:px-6 lg:px-8">

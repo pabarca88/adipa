@@ -129,7 +129,7 @@ export function ContactForm() {
                 type="text"
                 value={values.name}
                 onChange={handleChange("name")}
-                className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-[var(--color-text)] placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+                className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-[var(--color-text)] placeholder:text-slate-400 transition duration-200 hover:border-[var(--color-primary)]/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
                 placeholder="Tu nombre"
                 aria-invalid={Boolean(errors.name)}
                 aria-describedby={errors.name ? "name-error" : undefined}
@@ -154,7 +154,7 @@ export function ContactForm() {
                 type="email"
                 value={values.email}
                 onChange={handleChange("email")}
-                className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-[var(--color-text)] placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+                className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-[var(--color-text)] placeholder:text-slate-400 transition duration-200 hover:border-[var(--color-primary)]/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
                 placeholder="tu@email.com"
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? "email-error" : undefined}
@@ -179,7 +179,7 @@ export function ContactForm() {
                 rows={5}
                 value={values.message}
                 onChange={handleChange("message")}
-                className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-[var(--color-text)] placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+                className="w-full rounded-2xl border border-[var(--color-border)] bg-white px-4 py-3 text-[var(--color-text)] placeholder:text-slate-400 transition duration-200 hover:border-[var(--color-primary)]/45 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
                 placeholder="Cuéntanos qué tipo de curso buscas."
                 aria-invalid={Boolean(errors.message)}
                 aria-describedby={errors.message ? "message-error" : undefined}

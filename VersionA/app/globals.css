@@ -37,3 +37,62 @@ body {
     text-decoration: none;
   }
 }
+
+@keyframes gridFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardRiseIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@layer components {
+  .filter-chip {
+    transition:
+      transform 180ms ease,
+      border-color 220ms ease,
+      background-color 220ms ease,
+      color 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .filter-chip:hover {
+    transform: translateY(-1px);
+  }
+
+  .grid-animate {
+    animation: gridFadeIn 320ms ease both;
+  }
+
+  .course-card-animate {
+    animation: cardRiseIn 360ms ease both;
+    animation-delay: calc(var(--item-index, 0) * 34ms);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .filter-chip,
+  .grid-animate,
+  .course-card-animate {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,12 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = ["Cursos", "Diplomados", "Recursos", "Contacto"];
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--color-border)] bg-[rgba(255,255,255,0.92)] backdrop-blur">
@@ -54,6 +65,7 @@ export function Header() {
           type="button"
           aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={isMenuOpen}
+          aria-controls="mobile-nav-panel"
           onClick={() => setIsMenuOpen((current) => !current)}
           className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border)] bg-white/80 text-[var(--color-text)] transition duration-300 hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-primary-soft)] md:hidden"
         >
@@ -76,6 +88,7 @@ export function Header() {
       </div>
 
       <div
+        id="mobile-nav-panel"
         className={`overflow-hidden border-t border-[var(--color-border)] bg-white/95 transition-all duration-300 ease-out md:hidden ${
           isMenuOpen
             ? "max-h-80 opacity-100"

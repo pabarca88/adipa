@@ -17,7 +17,7 @@ export interface Course {
   originalPrice: number;
   price: number;
   summary: string;
-  imageClassName: string;
+  imageUrl: string;
 }
 
 export const categories: Category[] = [
@@ -39,7 +39,7 @@ export const courses: Course[] = [
     price: 64990,
     summary:
       "Herramientas prácticas para abordar casos frecuentes en consulta con adultos jóvenes.",
-    imageClassName: "from-sky-500 via-cyan-400 to-emerald-300",
+    imageUrl: "https://unsplash.it/640/425?image=100",
   },
   {
     id: 2,
@@ -52,7 +52,7 @@ export const courses: Course[] = [
     price: 79990,
     summary:
       "Un recorrido aplicado por evaluación, formulación clínica y estrategias de intervención.",
-    imageClassName: "from-indigo-500 via-sky-500 to-cyan-300",
+    imageUrl: "https://unsplash.it/640/425?image=101",
   },
   {
     id: 3,
@@ -65,7 +65,7 @@ export const courses: Course[] = [
     price: 54990,
     summary:
       "Planifica experiencias inclusivas con estrategias concretas y evaluación flexible.",
-    imageClassName: "from-amber-400 via-orange-400 to-rose-400",
+    imageUrl: "https://unsplash.it/640/425?image=102",
   },
   {
     id: 4,
@@ -78,7 +78,7 @@ export const courses: Course[] = [
     price: 59990,
     summary:
       "Conecta evidencia, emoción y aprendizaje para mejorar el compromiso en clases.",
-    imageClassName: "from-fuchsia-500 via-pink-400 to-orange-300",
+    imageUrl: "https://unsplash.it/640/425?image=103",
   },
   {
     id: 5,
@@ -91,7 +91,7 @@ export const courses: Course[] = [
     price: 94990,
     summary:
       "Desarrolla conversaciones de alto impacto, coordinación y cultura de confianza.",
-    imageClassName: "from-emerald-500 via-teal-400 to-lime-300",
+    imageUrl: "https://unsplash.it/640/425?image=104",
   },
   {
     id: 6,
@@ -104,7 +104,7 @@ export const courses: Course[] = [
     price: 69990,
     summary:
       "Métricas, intervenciones y prácticas sostenibles para equipos con alta demanda.",
-    imageClassName: "from-violet-500 via-purple-400 to-pink-300",
+    imageUrl: "https://unsplash.it/640/425?image=106",
   },
   {
     id: 7,
@@ -117,7 +117,7 @@ export const courses: Course[] = [
     price: 73990,
     summary:
       "Integra entrevista, escalas y devolución a familias desde una mirada actual.",
-    imageClassName: "from-blue-600 via-sky-500 to-teal-300",
+    imageUrl: "https://unsplash.it/640/425?image=107",
   },
   {
     id: 8,
@@ -130,6 +130,84 @@ export const courses: Course[] = [
     price: 56990,
     summary:
       "Modelos preventivos y protocolos de acción para contextos educativos complejos.",
-    imageClassName: "from-rose-500 via-orange-400 to-amber-300",
+    imageUrl: "https://unsplash.it/640/425?image=108",
+  },
+  {
+    id: 9,
+    title: "Evaluación neuropsicológica en adultos mayores",
+    category: "Psicología Clínica",
+    instructor: "Dra. Javiera Molina",
+    startDate: "24 de mayo",
+    modality: "Online",
+    originalPrice: 119990,
+    price: 86990,
+    summary:
+      "Protocolos de evaluación, interpretación de resultados y comunicación clínica en contextos de envejecimiento.",
+    imageUrl: "https://unsplash.it/640/425?image=109",
+  },
+  {
+    id: 10,
+    title: "Intervenciones breves en crisis y primeros auxilios psicológicos",
+    category: "Psicología Clínica",
+    instructor: "Ps. Tomás Herrera",
+    startDate: "29 de mayo",
+    modality: "En vivo",
+    originalPrice: 94990,
+    price: 68990,
+    summary:
+      "Modelos de respuesta inmediata, contención y derivación segura para distintos escenarios de emergencia.",
+    imageUrl: "https://unsplash.it/640/425?image=110",
+  },
+  {
+    id: 11,
+    title: "Evaluación auténtica y retroalimentación efectiva en educación superior",
+    category: "Educación",
+    instructor: "Mg. Carla Bustos",
+    startDate: "02 de junio",
+    modality: "Online",
+    originalPrice: 82990,
+    price: 58990,
+    summary:
+      "Diseña instrumentos y estrategias de feedback que mejoren aprendizaje y compromiso en aula universitaria.",
+    imageUrl: "https://unsplash.it/640/425?image=111",
+  },
+  {
+    id: 12,
+    title: "Planificación didáctica inclusiva con apoyo de tecnologías educativas",
+    category: "Educación",
+    instructor: "Prof. Daniela Muñoz",
+    startDate: "07 de junio",
+    modality: "Presencial",
+    originalPrice: 88990,
+    price: 62990,
+    summary:
+      "Integra herramientas digitales y metodologías activas para atender diversidad y participación en clase.",
+    imageUrl: "https://unsplash.it/640/425?image=112",
+  },
+  {
+    id: 13,
+    title: "Comunicación estratégica para líderes de equipos interdisciplinarios",
+    category: "Liderazgo y Bienestar",
+    instructor: "Mg. Renato Díaz",
+    startDate: "12 de junio",
+    modality: "En vivo",
+    originalPrice: 99990,
+    price: 71990,
+    summary:
+      "Técnicas para conversaciones difíciles, alineamiento de objetivos y coordinación efectiva en equipos complejos.",
+    imageUrl: "https://unsplash.it/640/425?image=113",
+  },
+  {
+    id: 14,
+    title: "Cultura organizacional saludable y prevención de riesgos psicosociales",
+    category: "Liderazgo y Bienestar",
+    instructor: "Ps. Francisca León",
+    startDate: "18 de junio",
+    modality: "Online",
+    originalPrice: 104990,
+    price: 75990,
+    summary:
+      "Herramientas para diagnóstico de clima, diseño de acciones preventivas y seguimiento de bienestar laboral.",
+    imageUrl: "https://unsplash.it/640/425?image=114",
   },
 ];

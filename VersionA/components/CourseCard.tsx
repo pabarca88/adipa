@@ -1,7 +1,9 @@
+import type { CSSProperties } from "react";
 import type { Course } from "@/data/courses";
 
 interface CourseCardProps {
   course: Course;
+  index?: number;
 }
 
 function formatPrice(value: number) {
@@ -25,14 +27,20 @@ function getModalityDotClass(modality: Course["modality"]) {
   }
 }
 
-export function CourseCard({ course }: CourseCardProps) {
+export function CourseCard({ course, index = 0 }: CourseCardProps) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-[var(--color-border)] bg-white transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_30px_rgba(112,78,253,0.12)]">
-      <div
-        className={`h-40 bg-gradient-to-br ${course.imageClassName} p-4`}
-        aria-hidden="true"
-      >
-        <div className="flex h-full items-start justify-between">
+    <article
+      className="course-card-animate group flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-[var(--color-border)] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_34px_rgba(112,78,253,0.16)]"
+      style={{ "--item-index": index } as CSSProperties}
+    >
+      <div className="relative h-40 overflow-hidden" aria-hidden="true">
+        <img
+          src={course.imageUrl}
+          alt=""
+          className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-black/10 to-transparent" />
+        <div className="absolute inset-0 flex items-start justify-between p-4">
           <span className="rounded-full bg-white/85 px-2.5 py-1 text-[10px] font-semibold uppercase text-[var(--color-primary)]">
             {course.category}
           </span>
@@ -88,7 +96,9 @@ export function CourseCard({ course }: CourseCardProps) {
             </p>
           </div>
 
-          <a href="#"
+          <a
+            href="#"
+            aria-label={`Ver detalles del curso ${course.title}`}
             className="rounded-full bg-[var(--color-primary)] px-3.5 py-2 text-xs font-semibold text-white transition group-hover:bg-[var(--color-primary-strong)]"
           >
             Ver curso
