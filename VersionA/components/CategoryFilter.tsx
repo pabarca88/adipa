@@ -14,7 +14,7 @@ export function CategoryFilter({
   return (
     <section
       aria-labelledby="categorias-heading"
-      className="self-start lg:sticky lg:top-20"
+      className="self-start lg:sticky lg:top-22"
     >
       <div className="rounded-[1.5rem] border border-[var(--color-border)] bg-[var(--color-surface)] p-4 shadow-[0_18px_40px_rgba(112,78,253,0.06)]">
         <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--color-text-muted)]">
@@ -46,7 +46,7 @@ export function CategoryFilter({
                 }`}
               >
                 {category}
-                <span className="text-base leading-none">+</span>
+                <span className="text-base leading-none"></span>
               </button>
             );
           })}

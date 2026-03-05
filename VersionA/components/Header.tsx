@@ -23,7 +23,7 @@ function ThemeToggleButton({
       aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
       aria-pressed={isDark}
       onClick={onToggle}
-      className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface-soft)] text-[var(--color-text)] transition duration-300 hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-primary-soft)] ${className ?? ""}`}
+      className={`cursor-pointer inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface-soft)] text-[var(--color-text)] transition duration-300 hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-primary-soft)] ${className ?? ""}`}
     >
       {isDark ? (
         <svg
