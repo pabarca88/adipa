@@ -12,6 +12,25 @@
   --color-primary-soft: #efe9ff;
   --color-accent: #36afff;
   --color-border: rgba(112, 78, 253, 0.16);
+  --bg-radial: rgba(112, 78, 253, 0.1);
+  --bg-grad-start: #f7f5fb;
+  --bg-grad-end: #f1eef8;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0f1220;
+  --color-surface: #171b2d;
+  --color-surface-soft: #1d2338;
+  --color-text: #f1f4ff;
+  --color-text-muted: #b7bfd6;
+  --color-primary: #8f79ff;
+  --color-primary-strong: #9f8cff;
+  --color-primary-soft: #2a234a;
+  --color-accent: #48b8ff;
+  --color-border: rgba(143, 121, 255, 0.26);
+  --bg-radial: rgba(143, 121, 255, 0.18);
+  --bg-grad-start: #0f1324;
+  --bg-grad-end: #0b0f1c;
 }
 
 * {
@@ -26,8 +45,8 @@ body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(112, 78, 253, 0.1), transparent 26%),
-    linear-gradient(180deg, #f7f5fb 0%, #f1eef8 100%);
+    radial-gradient(circle at top left, var(--bg-radial), transparent 26%),
+    linear-gradient(180deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%);
   color: var(--color-text);
 }
 

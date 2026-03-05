@@ -110,6 +110,7 @@ export default function HomePage() {
         />
         <CourseGrid
           courses={paginatedCourses}
+          totalCourses={sortedCourses.length}
           selectedSort={selectedSort}
           onSortChange={setSelectedSort}
           currentPage={safeCurrentPage}

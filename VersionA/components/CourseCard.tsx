@@ -28,15 +28,20 @@ function getModalityDotClass(modality: Course["modality"]) {
 }
 
 export function CourseCard({ course, index = 0 }: CourseCardProps) {
+  const shouldEagerLoad = index < 2;
+
   return (
     <article
-      className="course-card-animate group flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-[var(--color-border)] bg-white transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_34px_rgba(112,78,253,0.16)]"
+      className="course-card-animate group flex h-full flex-col overflow-hidden rounded-[1.35rem] border border-[var(--color-border)] bg-[var(--color-surface)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_34px_rgba(112,78,253,0.16)]"
       style={{ "--item-index": index } as CSSProperties}
     >
-      <div className="relative h-40 overflow-hidden" aria-hidden="true">
+      <div className="relative h-40 overflow-hidden">
         <img
           src={course.imageUrl}
-          alt=""
+          alt={`Imagen referencial del curso ${course.title}`}
+          loading={shouldEagerLoad ? "eager" : "lazy"}
+          fetchPriority={shouldEagerLoad ? "high" : "low"}
+          decoding="async"
           className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/28 via-black/10 to-transparent" />

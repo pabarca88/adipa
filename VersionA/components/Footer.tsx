@@ -49,7 +49,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="mt-10 border-t border-[var(--color-border)] bg-white">
+    <footer className="mt-10 border-t border-[var(--color-border)] bg-[var(--color-surface)]">
       <div className="mx-auto flex max-w-7xl flex-col gap-8 px-4 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <div>
           <Image

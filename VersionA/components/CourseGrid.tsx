@@ -15,6 +15,7 @@ const sortOptions: SortOption[] = [
 
 interface CourseGridProps {
   courses: Course[];
+  totalCourses: number;
   selectedSort: SortOption;
   onSortChange: (value: SortOption) => void;
   currentPage: number;
@@ -24,6 +25,7 @@ interface CourseGridProps {
 
 export function CourseGrid({
   courses,
+  totalCourses,
   selectedSort,
   onSortChange,
   currentPage,
@@ -70,7 +72,7 @@ export function CourseGrid({
             Catálogo destacado
           </h2>
           <p className="mt-1 text-xs leading-5 text-[var(--color-text-muted)]">
-            {courses.length} cursos disponibles con enfoque práctico y docentes
+            {totalCourses} cursos disponibles con enfoque práctico y docentes
             especializados.
           </p>
         </div>
@@ -113,6 +115,7 @@ export function CourseGrid({
             id="sort-options-list"
             role="listbox"
             aria-label="Opciones de orden"
+            aria-hidden={!isOpen}
             className={`absolute right-0 z-10 mt-3 w-full overflow-hidden rounded-[1.5rem] border border-black/8 bg-[#f5f4f4] py-2 shadow-[0_18px_40px_rgba(0,0,0,0.08)] transition-all duration-220 ease-out ${
               isOpen
                 ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
@@ -125,6 +128,7 @@ export function CourseGrid({
                 type="button"
                 role="option"
                 aria-selected={selectedSort === option}
+                tabIndex={isOpen ? 0 : -1}
                 onClick={() => {
                   onSortChange(option);
                   setIsOpen(false);
@@ -154,7 +158,7 @@ export function CourseGrid({
           type="button"
           onClick={() => onPageChange(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1}
-          className="cursor-pointer rounded-full border border-[var(--color-border)] bg-white px-3.5 py-2 text-xs font-semibold text-[var(--color-text)] transition hover:border-[var(--color-primary)]/50 disabled:cursor-not-allowed disabled:opacity-45"
+          className="cursor-pointer rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3.5 py-2 text-xs font-semibold text-[var(--color-text)] transition hover:border-[var(--color-primary)]/50 disabled:cursor-not-allowed disabled:opacity-45"
         >
           Anterior
         </button>
@@ -172,7 +176,7 @@ export function CourseGrid({
               className={`h-9 min-w-9 cursor-pointer rounded-full px-3 text-xs font-semibold transition ${
                 isActive
                   ? "bg-[var(--color-primary)] text-white"
-                  : "border border-[var(--color-border)] bg-white text-[var(--color-text)] hover:border-[var(--color-primary)]/50"
+                  : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-primary)]/50"
               }`}
             >
               {page}
@@ -184,7 +188,7 @@ export function CourseGrid({
           type="button"
           onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
           disabled={currentPage === totalPages}
-          className="cursor-pointer rounded-full border border-[var(--color-border)] bg-white px-3.5 py-2 text-xs font-semibold text-[var(--color-text)] transition hover:border-[var(--color-primary)]/50 disabled:cursor-not-allowed disabled:opacity-45"
+          className="cursor-pointer rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3.5 py-2 text-xs font-semibold text-[var(--color-text)] transition hover:border-[var(--color-primary)]/50 disabled:cursor-not-allowed disabled:opacity-45"
         >
           Siguiente
         </button>

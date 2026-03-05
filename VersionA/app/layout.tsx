@@ -61,7 +61,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
         <a
           href="#contenido-principal"
-          className="sr-only z-50 rounded-md bg-white px-4 py-2 text-sm font-medium text-[var(--color-text)] focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          className="sr-only z-50 rounded-md bg-[var(--color-surface)] px-4 py-2 text-sm font-medium text-[var(--color-text)] focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
         >
           Saltar al contenido principal
         </a>
