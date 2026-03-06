@@ -10,6 +10,11 @@ Este repositorio contiene dos implementaciones de la misma landing:
 - `VersionA/` - Implementación en Next.js
 - `VersionB/` - Implementación en Laravel
 
+## Demos
+
+- VersionA: https://adipa.vercel.app/
+- VersionB: https://matriweb.cl/adipa
+
 ## Documentación por versión
 
 Cada versión tiene su propio README con instalación, desarrollo, build y versiones usadas:
