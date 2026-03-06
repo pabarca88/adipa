@@ -1,35 +1,868 @@
-* 
+:root
+  --color-bg #f3f1f6
+  --color-surface #ffffff
+  --color-surface-soft #f7f4ff
+  --color-text #262334
+  --color-text-muted #716d83
+  --color-primary #704efd
+  --color-primary-strong #5f39ff
+  --color-primary-soft #efe9ff
+  --color-accent #36afff
+  --color-border rgba(112, 78, 253, 0.16)
+  --bg-radial rgba(112, 78, 253, 0.1)
+  --bg-grad-start #f7f5fb
+  --bg-grad-end #f1eef8
+  --bg-white rgba(255, 255, 255, 0.85)
+
+[data-theme='dark']
+  --color-bg #0f1220
+  --color-surface #171b2d
+  --color-surface-soft #1d2338
+  --color-text #f1f4ff
+  --color-text-muted #b7bfd6
+  --color-primary #8f79ff
+  --color-primary-strong #9f8cff
+  --color-primary-soft #2a234a
+  --color-accent #48b8ff
+  --color-border rgba(143, 121, 255, 0.26)
+  --bg-radial rgba(143, 121, 255, 0.18)
+  --bg-grad-start #0f1324
+  --bg-grad-end #0b0f1c
+  --bg-white rgba(69, 58, 128, 0.85)
+
+*
 *::before
 *::after
   box-sizing border-box
 
+html
+  scroll-behavior smooth
+
 body
   margin 0
-  font-family 'Manrope', sans-serif
-  background #f4f4f6
-  color #252336
+  font-family 'Poppins', sans-serif
+  color var(--color-text)
+  background radial-gradient(circle at top left, var(--bg-radial), transparent 26%), linear-gradient(180deg, var(--bg-grad-start) 0%, var(--bg-grad-end) 100%)
 
-.base
-  min-height 100vh
-  display flex
+img
+  max-width 100%
+  display block
+
+a
+  color inherit
+  text-decoration none
+
+button
+  font inherit
+
+.container
+  width calc(100% - 32px)
+  max-width 1216px
+  margin 0 auto
+
+.button
+  display inline-flex
   align-items center
   justify-content center
+  gap 8px
+  min-height 44px
+  padding 0 20px
+  border-radius 999px
+  border 1px solid transparent
+  font-size 14px
+  font-weight 600
+  line-height 1
+  transition transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease
+
+  &:hover
+    transform translateY(-1px)
+
+  &--primary
+    background var(--color-primary)
+    color #fff
+
+    &:hover
+      background var(--color-primary-strong)
+
+  &--light
+    background #fff
+    color var(--color-primary)
+
+  &--outline-light
+    border-color rgba(255, 255, 255, .4)
+    color #fff
+
+    &:hover
+      background rgba(255, 255, 255, .1)
+
+  &--small
+    min-height 36px
+    padding 0 14px
+    font-size 12px
+
+  &--full
+    width 100%
+
+.site-header
+  position sticky
+  top 0
+  z-index 40
+  border-bottom 1px solid var(--color-border)
+  background var(--color-surface)
+  backdrop-filter blur(10px)
+
+  &__inner
+    display flex
+    align-items center
+    justify-content space-between
+    gap 16px
+    padding 16px 0
+
+  &__brand img
+    width 148px
+    height auto
+
+  &__nav
+    display none
+    align-items center
+    gap 28px
+    font-size 14px
+    font-weight 500
+
+  &__link
+    transition color .2s ease
+
+    &:hover
+      color var(--color-primary)
+
+  &__actions
+    display none
+    align-items center
+    gap 12px
+
+  &__mobile-actions
+    display flex
+    align-items center
+    gap 8px
+
+  &__mobile-panel
+    max-height 0
+    overflow hidden
+    border-top 1px solid transparent
+    background var(--color-surface)
+    transition max-height .3s ease, border-color .3s ease
+
+    &.is-open
+      max-height 360px
+      border-top 1px solid var(--color-border)
+
+  &__mobile-inner
+    padding 14px 0 18px
+
+  &__mobile-nav
+    display grid
+    gap 6px
+    margin-bottom 12px
+
+  &__mobile-link
+    padding 12px 14px
+    border-radius 14px
+    font-size 14px
+    font-weight 500
+
+    &:hover
+      background var(--color-primary-soft)
+      color var(--color-primary)
+
+.theme-toggle
+  width 44px
+  height 44px
+  border-radius 999px
+  border 1px solid var(--color-border)
+  background var(--color-surface-soft)
+  color var(--color-text)
+  display inline-flex
+  align-items center
+  justify-content center
+  position relative
+  cursor pointer
+  padding-top 6px
+
+  &__icon
+    position absolute
+    font-size 14px
+    transition opacity .2s ease
+
+    &--sun
+      opacity 0
+
+  &__svg
+    width 20px
+    height 20px
+
+[data-theme='dark']
+  .theme-toggle__icon--sun
+    opacity 1
+
+  .theme-toggle__icon--moon
+    opacity 0
+
+.menu-toggle
+  position relative
+  width 44px
+  height 44px
+  border-radius 999px
+  border 1px solid var(--color-border)
+  background var(--color-surface-soft)
+  cursor pointer
+
+  span
+    position absolute
+    left 12px
+    width 20px
+    height 2px
+    border-radius 999px
+    background currentColor
+    transition transform .3s ease, opacity .2s ease
+
+    &:nth-child(1)
+      transform translateY(-6px)
+
+    &:nth-child(3)
+      transform translateY(6px)
+
+  &.is-open span:nth-child(1)
+    transform rotate(45deg)
+
+  &.is-open span:nth-child(2)
+    opacity 0
+
+  &.is-open span:nth-child(3)
+    transform rotate(-45deg)
+
+.hero
+  position relative
+  overflow hidden
+  border-bottom 1px solid var(--color-border)
+  background linear-gradient(135deg, #6d49fb 0%, #704efd 48%, #8e77ff 100%)
+
+  &__overlay
+    position absolute
+    inset 0
+    background radial-gradient(circle at top left, rgba(255, 255, 255, .18), transparent 30%), radial-gradient(circle at bottom right, rgba(255, 255, 255, .1), transparent 26%)
+
+  &__inner
+    position relative
+    display flex
+    justify-content center
+    padding 72px 0
+
+  &__content
+    max-width 720px
+    text-align center
+
+  &__eyebrow
+    display inline-flex
+    border 1px solid rgba(255, 255, 255, .3)
+    background rgba(255, 255, 255, .1)
+    border-radius 999px
+    padding 8px 16px
+    font-size 12px
+    font-weight 600
+    letter-spacing .16em
+    text-transform uppercase
+    color rgba(255, 255, 255, .9)
+
+  &__title
+    margin 24px 0 0
+    color #fff
+    font-size clamp(32px, 6vw, 54px)
+    line-height 1.1
+    letter-spacing -.02em
+    font-weight 600
+
+  &__text
+    margin 24px 0 0
+    color rgba(255, 255, 255, .85)
+    font-size 18px
+    line-height 1.7
+
+  &__actions
+    margin-top 28px
+    display flex
+    flex-wrap wrap
+    justify-content center
+    gap 10px
+
+.catalog-layout
+  margin-top 32px
+  display grid
+  gap 24px
+
+.filters
+  align-self start
+
+  &__panel
+    border 1px solid var(--color-border)
+    background var(--color-surface)
+    border-radius 24px
+    padding 16px
+    box-shadow 0 18px 40px rgba(112, 78, 253, .06)
+
+  &__eyebrow
+    margin 0
+    font-size 11px
+    text-transform uppercase
+    letter-spacing .24em
+    color var(--color-text-muted)
+    font-weight 600
+
+  &__title
+    margin 10px 0 0
+    font-size 20px
+    line-height 1.2
+    letter-spacing -.02em
+    font-weight 500
+
+  &__list
+    margin-top 18px
+    display grid
+    gap 8px
+
+  &__chip
+    width 100%
+    display flex
+    align-items center
+    justify-content space-between
+    border-radius 12px
+    border 1px solid var(--color-border)
+    background var(--color-surface-soft)
+    color var(--color-text)
+    padding 11px 12px
+    font-size 13px
+    text-align left
+    cursor pointer
+    transition transform .18s ease, border-color .22s ease, background-color .22s ease, color .22s ease
+
+    &:hover
+      transform translateY(-1px)
+
+    &.is-active
+      border-color var(--color-primary)
+      background var(--color-primary-soft)
+      color var(--color-primary)
+
+.courses
+  border 1px solid var(--color-border)
+  background var(--color-surface)
+  border-radius 24px
+  padding 16px
+  box-shadow 0 18px 40px rgba(112, 78, 253, .06)
+
+  &__header
+    display flex
+    flex-wrap wrap
+    gap 12px
+    justify-content space-between
+    align-items flex-end
+
+  &__title
+    margin 0
+    font-size 24px
+    line-height 1.1
+    letter-spacing -.02em
+    color var(--color-primary)
+    font-weight 500
+
+  &__subtitle
+    margin 8px 0 0
+    font-size 12px
+    line-height 1.5
+    color var(--color-text-muted)
+
+  &__grid
+    margin-top 20px
+    display grid
+    gap 16px
+    grid-template-columns 1fr
+    animation gridFadeIn .32s ease both
+
+.sort
+  position relative
+  min-width 190px
+
+  &__label
+    margin 0
+    font-size 10px
+    font-weight 600
+    color var(--color-text-muted)
+    text-transform uppercase
+
+  &__trigger
+    margin-top 4px
+    width 100%
+    border 0
+    cursor pointer
+    display flex
+    align-items center
+    justify-content space-between
+    gap 10px
+    padding 12px 16px
+    border-radius 12px
+    background var(--color-surface-soft)
+    color var(--color-text)
+    font-weight 600
+
+    svg
+      width 16px
+      height 16px
+      transition transform .2s ease
+
+  &__options
+    position absolute
+    top calc(100% + 10px)
+    right 0
+    z-index 10
+    width 100%
+    border-radius 18px
+    border 1px solid rgba(0, 0, 0, .08)
+    background #f5f4f4
+    padding 8px 0
+    box-shadow 0 18px 40px rgba(0, 0, 0, .08)
+    opacity 0
+    transform translateY(-4px) scale(.98)
+    pointer-events none
+    transition opacity .22s ease, transform .22s ease
+
+  &__option
+    width 100%
+    border 0
+    background transparent
+    text-align left
+    padding 12px 16px
+    color var(--color-text)
+    font-size 14px
+    cursor pointer
+
+    &:hover
+      background rgba(0, 0, 0, .03)
+
+  &.is-open &__trigger svg
+    transform rotate(180deg)
+
+  &.is-open &__options
+    opacity 1
+    transform translateY(0) scale(1)
+    pointer-events auto
+
+[data-theme='dark'] .sort__options
+  background #232940
+  border-color rgba(255, 255, 255, .1)
+
+[data-theme='dark'] .sort__option:hover
+  background rgba(255, 255, 255, .06)
+
+.course-card
+  display flex
+  flex-direction column
+  height 100%
+  overflow hidden
+  border-radius 22px
+  border 1px solid var(--color-border)
+  background var(--color-surface)
+  transition transform .3s ease, box-shadow .3s ease
+  animation cardRiseIn .36s ease both
+
+  &:hover
+    transform translateY(-4px)
+    box-shadow 0 20px 34px rgba(112, 78, 253, .16)
+
+  &__media
+    position relative
+    height 160px
+    overflow hidden
+
+    img
+      width 100%
+      height 100%
+      object-fit cover
+      transition transform .5s ease
+
+  &:hover &__media img
+    transform scale(1.03)
+
+  &__overlay
+    position absolute
+    inset 0
+    background linear-gradient(to top, rgba(0, 0, 0, .28), rgba(0, 0, 0, .1), transparent)
+
+  &__tags
+    position absolute
+    inset 0
+    padding 16px
+    display flex
+    align-items flex-start
+    justify-content space-between
+
+  &__category
+    border-radius 999px
+    background var(--bg-white)
+    padding 4px 10px
+    font-size 10px
+    font-weight 600
+    text-transform uppercase
+
+  &__modality
+    border-radius 999px
+    background var(--color-primary)
+    color #fff
+    padding 4px 10px
+    font-size 10px
+    font-weight 600
+    display inline-flex
+    align-items center
+    gap 6px
+
+  &__dot
+    width 8px
+    height 8px
+    border-radius 999px
+    background #fff
+
+    &.is-online
+      background #7dd3fc
+
+    &.is-live
+      background #6ee7b7
+
+    &.is-presential
+      background #fcd34d
+
+  &__body
+    display flex
+    flex-direction column
+    flex 1
+    padding 16px
+
+  &__content
+    flex 1
+
+  &__start
+    margin 0
+    font-size 12px
+    color var(--color-accent)
+    font-weight 500
+
+  &__title
+    margin 8px 0 0
+    font-size 16px
+    line-height 1.5
+    font-weight 600
+
+  &__summary
+    margin 8px 0 0
+    font-size 13px
+    line-height 1.5
+    color var(--color-text-muted)
+
+  &__instructor
+    margin 12px 0 0
+    font-size 12px
+    color var(--color-text-muted)
+
+    span
+      font-weight 500
+      color var(--color-text)
+
+  &__footer
+    margin-top 16px
+    padding-top 16px
+    border-top 1px solid var(--color-border)
+    display flex
+    align-items flex-end
+    justify-content space-between
+    gap 10px
+
+  &__price
+    margin 0
+
+    &--old
+      font-size 12px
+      color var(--color-text-muted)
+      text-decoration line-through
+
+    &--current
+      font-size 28px
+      font-weight 600
+
+.pagination
+  margin-top 24px
+  display flex
+  flex-wrap wrap
+  align-items center
+  justify-content center
+  gap 8px
+
+  &__numbers
+    display flex
+    gap 8px
+
+  &__btn
+  &__number
+    border-radius 999px
+    border 1px solid var(--color-border)
+    background var(--color-surface)
+    color var(--color-text)
+    padding 8px 14px
+    font-size 12px
+    font-weight 600
+    cursor pointer
+    transition border-color .2s ease, opacity .2s ease
+
+    &:hover
+      border-color rgba(112, 78, 253, .5)
+
+  &__number
+    min-width 36px
+    height 36px
+    padding 0 12px
+
+    &.is-active
+      background var(--color-primary)
+      border-color var(--color-primary)
+      color #fff
+
+  &__btn:disabled
+    opacity .45
+    cursor not-allowed
+
+.contact-wrap
+  margin-top 24px
+
+.contact
+  border-radius 32px
+  border 1px solid var(--color-border)
+  background var(--color-surface)
+  box-shadow 0 24px 60px rgba(112, 78, 253, .08)
   padding 24px
 
-.base__container
-  width min(100%, 760px)
-  padding 32px
-  border 1px solid #d8d8df
-  border-radius 16px
-  background #ffffff
+  &__layout
+    display grid
+    gap 30px
 
-.base__title
-  margin 0 0 12px
-  font-size 2rem
-  line-height 1.2
+  &__title
+    margin 0
+    font-size 30px
+    line-height 1.1
+    letter-spacing -.02em
+    font-weight 600
 
-.base__text
-  margin 0
-  font-size 1rem
-  line-height 1.6
-  color #5e5b73
+  &__text
+    margin 16px 0 0
+    font-size 14px
+    line-height 1.9
+    color var(--color-text-muted)
+
+  &__notes
+    margin-top 24px
+    display grid
+    gap 12px
+
+  &__note
+    margin 0
+    border-radius 16px
+    border 1px solid var(--color-border)
+    background var(--color-surface-soft)
+    padding 14px
+    font-size 14px
+
+.contact-form
+  border-radius 24px
+  border 1px solid var(--color-border)
+  background var(--color-surface-soft)
+  padding 18px
+
+  &__field
+    margin-top 14px
+
+    &:first-of-type
+      margin-top 0
+
+  label
+    display block
+    margin-bottom 8px
+    font-size 14px
+    font-weight 500
+
+  input
+  textarea
+    width 100%
+    border-radius 16px
+    border 1px solid var(--color-border)
+    background var(--color-surface)
+    color var(--color-text)
+    padding 12px 14px
+    font-size 14px
+    transition border-color .2s ease, box-shadow .2s ease
+    font-family Poppins
+
+    &:focus
+      outline 0
+      border-color rgba(112, 78, 253, .45)
+      box-shadow 0 0 0 2px rgba(112, 78, 253, .2)
+
+  .is-invalid
+    border-color rgba(217, 79, 115, .8)
+
+  &__error
+    margin 8px 0 0
+    font-size 13px
+    color #fda4af
+
+  &__success
+    margin-bottom 14px
+    border-radius 16px
+    border 1px solid rgba(52, 211, 153, .3)
+    background rgba(52, 211, 153, .12)
+    color #065f46
+    font-size 14px
+    padding 12px 14px
+
+[data-theme='dark'] .contact-form__success
+  color #a7f3d0
+
+.site-footer
+  margin-top 40px
+  border-top 1px solid var(--color-border)
+  background var(--color-surface)
+
+  &__inner
+    display flex
+    flex-direction column
+    gap 26px
+    padding 36px 0
+
+    img
+      width 110px
+      height auto
+
+  &__description
+    margin 12px 0 0
+    max-width 500px
+    font-size 14px
+    line-height 1.6
+    color var(--color-text-muted)
+
+  &__columns
+    display flex
+    gap 40px
+    flex-wrap wrap
+
+    h3
+      margin 0
+      font-size 14px
+
+    ul
+      list-style none
+      margin 10px 0 0
+      padding 0
+      display grid
+      gap 8px
+
+    a
+      font-size 14px
+      color var(--color-text-muted)
+
+      &:hover
+        color var(--color-primary)
+
+  &__socials
+    display flex !important
+    gap 10px !important
+
+    a
+      width 40px
+      height 40px
+      border-radius 999px
+      border 1px solid var(--color-border)
+      background var(--color-surface-soft)
+      display inline-flex
+      align-items center
+      justify-content center
+      text-transform uppercase
+      font-size 12px
+
+  &__social-icon
+    width 16px
+    height 16px
+
+  &__bottom
+    border-top 1px solid var(--color-border)
+    background var(--color-surface-soft)
+
+    p
+      margin 0
+      padding 14px 0
+      text-align center
+      font-size 12px
+      color var(--color-text-muted)
+
+@keyframes gridFadeIn
+  from
+    opacity 0
+    transform translateY(8px)
+  to
+    opacity 1
+    transform translateY(0)
+
+@keyframes cardRiseIn
+  from
+    opacity 0
+    transform translateY(10px) scale(.985)
+  to
+    opacity 1
+    transform translateY(0) scale(1)
+
+@media (min-width: 768px)
+  .container
+    width calc(100% - 48px)
+    max-width 1216px
+
+  .site-header
+    &__brand img
+      width 172px
+
+    &__nav
+      display flex
+
+    &__actions
+      display flex
+
+    &__mobile-actions
+      display none
+
+  .courses
+    &__grid
+      grid-template-columns repeat(2, minmax(0, 1fr))
+
+  .contact
+    &__layout
+      grid-template-columns minmax(0, .95fr) minmax(0, 1.05fr)
+
+  .site-footer
+    &__inner
+      flex-direction row
+      justify-content space-between
+      align-items center
+
+@media (min-width: 1280px)
+  .catalog-layout
+    grid-template-columns 240px minmax(0, 1fr)
+
+  .filters
+    position sticky
+    top 88px
+
+  .courses
+    &__grid
+      grid-template-columns repeat(3, minmax(0, 1fr))
