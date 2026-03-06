@@ -1,50 +1,51 @@
-# Version B - Base Laravel
+# Version B - Laravel
 
-## Requisitos
+## Instrucciones de instalación
 
-- PHP 8.2+
-- Composer
-- Node.js 18+
+```bash
+cd VersionB
+composer install
+npm install
+cp .env.example .env
+'/Users/pabloabarca/Library/Application Support/Herd/bin/php' artisan key:generate
+```
 
-## Stack definido para la Version B
+Si no usas Herd, reemplaza ese binario por tu `php` local (compatible con Laravel 11).
 
-- Laravel 11+
+## Comandos para ejecutar en desarrollo
+
+Terminal 1 (backend):
+
+```bash
+cd VersionB
+'/Users/pabloabarca/Library/Application Support/Herd/bin/php' artisan serve
+```
+
+Terminal 2 (assets Stylus/JS):
+
+```bash
+cd VersionB
+npm run dev
+```
+
+## Comando de build para producción
+
+```bash
+cd VersionB
+npm run build
+```
+
+## Versiones de Node/PHP/Composer utilizadas
+
+- Node.js: `v23.7.0`
+- PHP (Herd): `8.4.14`
+- Composer: `2.9.2`
+
+## Stack de la versión
+
+- Laravel `11.x`
 - Blade (layouts y secciones)
 - Stylus como preprocesador CSS
 - jQuery para interactividad
 - Laravel Mix como build tool
-- BEM para nomenclatura de clases
-
-## Estado de este commit
-
-Este commit deja la estructura base lista, sin la implementacion final de vistas.
-
-- `routes/web.php`: ruta base `Route::view('/', 'home')`
-- `resources/views/layouts/app.blade.php`: layout base Blade
-- `resources/views/home.blade.php`: placeholder inicial
-- `resources/stylus/app.styl`: base Stylus con bloque BEM de ejemplo
-- `resources/js/app.js`: setup de jQuery listo para extender
-- `webpack.mix.js`: compilacion de `resources/stylus/app.styl` y `resources/js/app.js`
-
-## Instalacion
-
-```bash
-composer install
-npm install
-cp .env.example .env
-php artisan key:generate
-```
-
-## Desarrollo
-
-Terminal 1:
-
-```bash
-php artisan serve
-```
-
-Terminal 2:
-
-```bash
-npm run dev
-```
+- Nomenclatura CSS BEM
