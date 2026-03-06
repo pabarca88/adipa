@@ -11,10 +11,10 @@ cd VersionB
 composer install
 npm install
 cp .env.example .env
-'/Users/pabloabarca/Library/Application Support/Herd/bin/php' artisan key:generate
+php artisan key:generate
 ```
 
-Si usas Herd, ejecuta PHP con su ruta. En otro entorno, usa simplemente `php`.
+Si usas Herd u otro manejador local, puedes reemplazar `php` por el binario que corresponda a tu entorno.
 
 ## Comandos para ejecutar en desarrollo
 
@@ -22,7 +22,7 @@ Terminal 1 (backend):
 
 ```bash
 cd VersionB
-'/Users/pabloabarca/Library/Application Support/Herd/bin/php' artisan serve
+php artisan serve
 ```
 
 Terminal 2 (assets Stylus/JS):
