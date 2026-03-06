@@ -10,7 +10,7 @@ cp .env.example .env
 '/Users/pabloabarca/Library/Application Support/Herd/bin/php' artisan key:generate
 ```
 
-Si no usas Herd, reemplaza ese binario por tu `php` local (compatible con Laravel 11).
+Si usas Herd, ejecuta PHP con su ruta. En otro entorno, usa simplemente `php`.
 
 ## Comandos para ejecutar en desarrollo
 
