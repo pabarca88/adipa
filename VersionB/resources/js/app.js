@@ -45,6 +45,20 @@ $(function () {
     let selectedSort = 'Todos';
     let currentPage = 1;
 
+    function setMenuState(isOpen) {
+        $menuToggle.toggleClass('is-open', isOpen)
+            .attr('aria-expanded', isOpen ? 'true' : 'false')
+            .attr('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+        $mobilePanel.toggleClass('is-open', isOpen).attr('aria-hidden', isOpen ? 'false' : 'true');
+    }
+
+    function setSortOpen(isOpen) {
+        $sort.toggleClass('is-open', isOpen);
+        $sortTrigger.attr('aria-expanded', isOpen ? 'true' : 'false');
+        $('#sort-options-list').attr('aria-hidden', isOpen ? 'false' : 'true');
+        $sortOptions.attr('tabindex', isOpen ? '0' : '-1');
+    }
+
     function parseCourseDate(value) {
         const parts = String(value).toLowerCase().split(' ');
         const day = Number(parts[0]) || 1;
@@ -69,9 +83,9 @@ $(function () {
                     return rightPrice - leftPrice;
                 case 'Menor Precio':
                     return leftPrice - rightPrice;
-                case 'Mas proximo':
+                case 'Más próximo':
                     return leftDate - rightDate;
-                case 'Menos proximo':
+                case 'Menos próximo':
                     return rightDate - leftDate;
                 default:
                     return 0;
@@ -90,7 +104,7 @@ $(function () {
                 type: 'button',
                 class: `pagination__number${isActive ? ' is-active' : ''}`,
                 text: page,
-                'aria-label': `Ir a la pagina ${page}`,
+                'aria-label': `Ir a la página ${page}`,
                 'aria-current': isActive ? 'page' : undefined,
             });
 
@@ -135,6 +149,7 @@ $(function () {
     function applyTheme(theme) {
         $html.attr('data-theme', theme);
         $themeToggles.attr('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        $themeToggles.attr('aria-label', theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
         window.localStorage.setItem('theme', theme);
     }
 
@@ -168,7 +183,7 @@ $(function () {
                 return false;
             }
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                showFieldError(name, 'Ingresa un email valido.');
+                showFieldError(name, 'Ingresa un email válido.');
                 return false;
             }
         }
@@ -190,10 +205,15 @@ $(function () {
         applyTheme(current === 'dark' ? 'light' : 'dark');
     });
 
+    setMenuState(false);
+    setSortOpen(false);
+
     $menuToggle.on('click', function () {
-        const isOpen = $(this).hasClass('is-open');
-        $(this).toggleClass('is-open', !isOpen).attr('aria-expanded', !isOpen ? 'true' : 'false');
-        $mobilePanel.toggleClass('is-open', !isOpen).attr('aria-hidden', !isOpen ? 'false' : 'true');
+        setMenuState(!$(this).hasClass('is-open'));
+    });
+
+    $('.site-header__mobile-link').on('click', function () {
+        setMenuState(false);
     });
 
     $filterButtons.on('click', function () {
@@ -207,10 +227,7 @@ $(function () {
     });
 
     $sortTrigger.on('click', function () {
-        const isOpen = $sort.hasClass('is-open');
-        $sort.toggleClass('is-open', !isOpen);
-        $(this).attr('aria-expanded', !isOpen ? 'true' : 'false');
-        $('#sort-options-list').attr('aria-hidden', !isOpen ? 'false' : 'true');
+        setSortOpen(!$sort.hasClass('is-open'));
     });
 
     $sortOptions.on('click', function () {
@@ -221,29 +238,29 @@ $(function () {
         $(this).attr('aria-selected', 'true');
         $sortValue.text(selectedSort);
 
-        $sort.removeClass('is-open');
-        $sortTrigger.attr('aria-expanded', 'false');
-        $('#sort-options-list').attr('aria-hidden', 'true');
+        setSortOpen(false);
 
         renderCourses();
     });
 
+    $sortTrigger.on('keydown', function (event) {
+        if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            setSortOpen(true);
+            $sortOptions.first().trigger('focus');
+        }
+    });
+
     $(document).on('mousedown', function (event) {
         if (!$sort[0].contains(event.target)) {
-            $sort.removeClass('is-open');
-            $sortTrigger.attr('aria-expanded', 'false');
-            $('#sort-options-list').attr('aria-hidden', 'true');
+            setSortOpen(false);
         }
     });
 
     $(window).on('keydown', function (event) {
         if (event.key === 'Escape') {
-            $sort.removeClass('is-open');
-            $sortTrigger.attr('aria-expanded', 'false');
-            $('#sort-options-list').attr('aria-hidden', 'true');
-
-            $menuToggle.removeClass('is-open').attr('aria-expanded', 'false');
-            $mobilePanel.removeClass('is-open').attr('aria-hidden', 'true');
+            setSortOpen(false);
+            setMenuState(false);
         }
     });
 

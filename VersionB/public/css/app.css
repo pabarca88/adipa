@@ -55,6 +55,25 @@ a {
 button {
   font: inherit;
 }
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 999;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+.skip-link:focus {
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+}
 .container {
   width: calc(100% - 32px);
   max-width: 1216px;
@@ -557,7 +576,7 @@ button {
   margin: 8px 0 0;
   font-size: 16px;
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 500;
 }
 .course-card__summary {
   margin: 8px 0 0;
@@ -592,8 +611,8 @@ button {
   text-decoration: line-through;
 }
 .course-card__price--current {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 500;
 }
 .pagination {
   margin-top: 24px;

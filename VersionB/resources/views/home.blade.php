@@ -1,57 +1,68 @@
 @extends('layouts.app')
 
 @php
+    $title = 'ADIPA | Cursos de Psicología con Certificado en 2026';
+    $metaDescription = 'Explora cursos de psicología, educación y liderazgo con certificación 2026 en ADIPA. Filtra, compara y solicita información en línea.';
+    $canonical = url()->current();
+    $ogTitle = $title;
+    $ogDescription = $metaDescription;
+    $ogUrl = $canonical;
+    $ogImage = asset('logo-adipa.svg');
+    $twitterTitle = $title;
+    $twitterDescription = $metaDescription;
+    $twitterImage = $ogImage;
+
     $navItems = ['Cursos', 'Diplomados', 'Recursos', 'Contacto'];
-    $categories = ['Todos', 'Psicologia Clinica', 'Educacion', 'Liderazgo y Bienestar'];
-    $sortOptions = ['Todos', 'Mayor Precio', 'Menor Precio', 'Mas proximo', 'Menos proximo'];
+    $categories = ['Todos', 'Psicología Clínica', 'Educación', 'Liderazgo y Bienestar'];
+    $sortOptions = ['Todos', 'Mayor Precio', 'Menor Precio', 'Más próximo', 'Menos próximo'];
 
     $courses = [
         [
             'id' => 1,
-            'title' => 'Intervencion breve en ansiedad y estres academico',
-            'category' => 'Psicologia Clinica',
+            'title' => 'Intervención breve en ansiedad y estrés académico',
+            'category' => 'Psicología Clínica',
             'instructor' => 'Dra. Camila Rojas',
             'start_date' => '12 de abril',
             'modality' => 'En vivo',
             'original_price' => 89990,
             'price' => 64990,
-            'summary' => 'Herramientas practicas para abordar casos frecuentes en consulta con adultos jovenes.',
+            'summary' => 'Herramientas prácticas para abordar casos frecuentes en consulta con adultos jóvenes.',
             'image' => 'https://unsplash.it/640/425?image=100',
         ],
         [
             'id' => 2,
-            'title' => 'Actualizacion en trauma complejo y regulacion emocional',
-            'category' => 'Psicologia Clinica',
-            'instructor' => 'Mg. Valentina Perez',
+            'title' => 'Actualización en trauma complejo y regulación emocional',
+            'category' => 'Psicología Clínica',
+            'instructor' => 'Mg. Valentina Pérez',
             'start_date' => '18 de abril',
             'modality' => 'Online',
             'original_price' => 109990,
             'price' => 79990,
-            'summary' => 'Un recorrido aplicado por evaluacion, formulacion clinica y estrategias de intervencion.',
+            'summary' => 'Un recorrido aplicado por evaluación, formulación clínica y estrategias de intervención.',
             'image' => 'https://unsplash.it/640/425?image=101',
         ],
         [
             'id' => 3,
-            'title' => 'Diseno universal para el aprendizaje en aula diversa',
-            'category' => 'Educacion',
+            'title' => 'Diseño universal para el aprendizaje en aula diversa',
+            'category' => 'Educación',
             'instructor' => 'Prof. Martina Salgado',
             'start_date' => '22 de abril',
             'modality' => 'En vivo',
             'original_price' => 75990,
             'price' => 54990,
-            'summary' => 'Planifica experiencias inclusivas con estrategias concretas y evaluacion flexible.',
+            'summary' => 'Planifica experiencias inclusivas con estrategias concretas y evaluación flexible.',
             'image' => 'https://unsplash.it/640/425?image=102',
         ],
         [
             'id' => 4,
-            'title' => 'Neurodidactica aplicada a la motivacion escolar',
-            'category' => 'Educacion',
+            'title' => 'Neurodidáctica aplicada a la motivación escolar',
+            'category' => 'Educación',
             'instructor' => 'Dr. Diego Mena',
             'start_date' => '27 de abril',
             'modality' => 'Online',
             'original_price' => 82990,
             'price' => 59990,
-            'summary' => 'Conecta evidencia, emocion y aprendizaje para mejorar el compromiso en clases.',
+            'summary' => 'Conecta evidencia, emoción y aprendizaje para mejorar el compromiso en clases.',
             'image' => 'https://unsplash.it/640/425?image=103',
         ],
         [
@@ -63,115 +74,115 @@
             'modality' => 'Presencial',
             'original_price' => 129990,
             'price' => 94990,
-            'summary' => 'Desarrolla conversaciones de alto impacto, coordinacion y cultura de confianza.',
+            'summary' => 'Desarrolla conversaciones de alto impacto, coordinación y cultura de confianza.',
             'image' => 'https://unsplash.it/640/425?image=104',
         ],
         [
             'id' => 6,
-            'title' => 'Prevencion del burnout y bienestar organizacional',
+            'title' => 'Prevención del burnout y bienestar organizacional',
             'category' => 'Liderazgo y Bienestar',
             'instructor' => 'Mg. Sebastian Leal',
             'start_date' => '08 de mayo',
             'modality' => 'Online',
             'original_price' => 96990,
             'price' => 69990,
-            'summary' => 'Metricas, intervenciones y practicas sostenibles para equipos con alta demanda.',
+            'summary' => 'Métricas, intervenciones y prácticas sostenibles para equipos con alta demanda.',
             'image' => 'https://unsplash.it/640/425?image=106',
         ],
         [
             'id' => 7,
-            'title' => 'Evaluacion clinica infantojuvenil con enfoque integrativo',
-            'category' => 'Psicologia Clinica',
+            'title' => 'Evaluación clínica infantojuvenil con enfoque integrativo',
+            'category' => 'Psicología Clínica',
             'instructor' => 'Dra. Antonia Fuentes',
             'start_date' => '11 de mayo',
             'modality' => 'En vivo',
             'original_price' => 99990,
             'price' => 73990,
-            'summary' => 'Integra entrevista, escalas y devolucion a familias desde una mirada actual.',
+            'summary' => 'Integra entrevista, escalas y devolución a familias desde una mirada actual.',
             'image' => 'https://unsplash.it/640/425?image=107',
         ],
         [
             'id' => 8,
-            'title' => 'Estrategias de convivencia escolar y mediacion',
-            'category' => 'Educacion',
-            'instructor' => 'Prof. Nicolas Verdugo',
+            'title' => 'Estrategias de convivencia escolar y mediación',
+            'category' => 'Educación',
+            'instructor' => 'Prof. Nicolás Verdugo',
             'start_date' => '17 de mayo',
             'modality' => 'Presencial',
             'original_price' => 78990,
             'price' => 56990,
-            'summary' => 'Modelos preventivos y protocolos de accion para contextos educativos complejos.',
+            'summary' => 'Modelos preventivos y protocolos de acción para contextos educativos complejos.',
             'image' => 'https://unsplash.it/640/425?image=108',
         ],
         [
             'id' => 9,
-            'title' => 'Evaluacion neuropsicologica en adultos mayores',
-            'category' => 'Psicologia Clinica',
+            'title' => 'Evaluación neuropsicológica en adultos mayores',
+            'category' => 'Psicología Clínica',
             'instructor' => 'Dra. Javiera Molina',
             'start_date' => '24 de mayo',
             'modality' => 'Online',
             'original_price' => 119990,
             'price' => 86990,
-            'summary' => 'Protocolos de evaluacion, interpretacion de resultados y comunicacion clinica en contextos de envejecimiento.',
+            'summary' => 'Protocolos de evaluación, interpretación de resultados y comunicación clínica en contextos de envejecimiento.',
             'image' => 'https://unsplash.it/640/425?image=109',
         ],
         [
             'id' => 10,
-            'title' => 'Intervenciones breves en crisis y primeros auxilios psicologicos',
-            'category' => 'Psicologia Clinica',
-            'instructor' => 'Ps. Tomas Herrera',
+            'title' => 'Intervenciónes breves en crisis y primeros auxilios psicológicos',
+            'category' => 'Psicología Clínica',
+            'instructor' => 'Ps. Tomás Herrera',
             'start_date' => '29 de mayo',
             'modality' => 'En vivo',
             'original_price' => 94990,
             'price' => 68990,
-            'summary' => 'Modelos de respuesta inmediata, contencion y derivacion segura para distintos escenarios de emergencia.',
+            'summary' => 'Modelos de respuesta inmediata, contención y derivación segura para distintos escenarios de emergencia.',
             'image' => 'https://unsplash.it/640/425?image=110',
         ],
         [
             'id' => 11,
-            'title' => 'Evaluacion autentica y retroalimentacion efectiva en educacion superior',
-            'category' => 'Educacion',
+            'title' => 'Evaluación auténtica y retroalimentación efectiva en educación superior',
+            'category' => 'Educación',
             'instructor' => 'Mg. Carla Bustos',
             'start_date' => '02 de junio',
             'modality' => 'Online',
             'original_price' => 82990,
             'price' => 58990,
-            'summary' => 'Disena instrumentos y estrategias de feedback que mejoren aprendizaje y compromiso en aula universitaria.',
+            'summary' => 'Diseña instrumentos y estrategias de feedback que mejoren aprendizaje y compromiso en aula universitaria.',
             'image' => 'https://unsplash.it/640/425?image=111',
         ],
         [
             'id' => 12,
-            'title' => 'Planificacion didactica inclusiva con apoyo de tecnologias educativas',
-            'category' => 'Educacion',
-            'instructor' => 'Prof. Daniela Munoz',
+            'title' => 'Planificación didáctica inclusiva con apoyo de tecnologías educativas',
+            'category' => 'Educación',
+            'instructor' => 'Prof. Daniela Muñoz',
             'start_date' => '07 de junio',
             'modality' => 'Presencial',
             'original_price' => 88990,
             'price' => 62990,
-            'summary' => 'Integra herramientas digitales y metodologias activas para atender diversidad y participacion en clase.',
+            'summary' => 'Integra herramientas digitales y metodologías activas para atender diversidad y participación en clase.',
             'image' => 'https://unsplash.it/640/425?image=112',
         ],
         [
             'id' => 13,
-            'title' => 'Comunicacion estrategica para lideres de equipos interdisciplinarios',
+            'title' => 'Comunicación estratégica para líderes de equipos interdisciplinarios',
             'category' => 'Liderazgo y Bienestar',
-            'instructor' => 'Mg. Renato Diaz',
+            'instructor' => 'Mg. Renato Díaz',
             'start_date' => '12 de junio',
             'modality' => 'En vivo',
             'original_price' => 99990,
             'price' => 71990,
-            'summary' => 'Tecnicas para conversaciones dificiles, alineamiento de objetivos y coordinacion efectiva en equipos complejos.',
+            'summary' => 'Técnicas para conversaciones difíciles, alineamiento de objetivos y coordinación efectiva en equipos complejos.',
             'image' => 'https://unsplash.it/640/425?image=113',
         ],
         [
             'id' => 14,
-            'title' => 'Cultura organizacional saludable y prevencion de riesgos psicosociales',
+            'title' => 'Cultura organizacional saludable y prevención de riesgos psicosociales',
             'category' => 'Liderazgo y Bienestar',
-            'instructor' => 'Ps. Francisca Leon',
+            'instructor' => 'Ps. Francisca León',
             'start_date' => '18 de junio',
             'modality' => 'Online',
             'original_price' => 104990,
             'price' => 75990,
-            'summary' => 'Herramientas para diagnostico de clima, diseno de acciones preventivas y seguimiento de bienestar laboral.',
+            'summary' => 'Herramientas para diagnóstico de clima, diseño de acciones preventivas y seguimiento de bienestar laboral.',
             'image' => 'https://unsplash.it/640/425?image=114',
         ],
     ];
@@ -195,7 +206,7 @@
                 </nav>
 
                 <div class="site-header__actions">
-                    <button type="button" class="theme-toggle js-theme-toggle" aria-label="Cambiar tema" aria-pressed="false">
+                    <button type="button" class="theme-toggle js-theme-toggle" aria-label="Cambiar a modo oscuro" aria-pressed="false">
                         <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
                             <svg viewBox="0 0 24 24" class="theme-toggle__svg" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 3.5V5.5M12 18.5V20.5M5.99 5.99L7.4 7.4M16.6 16.6L18.01 18.01M3.5 12H5.5M18.5 12H20.5M5.99 18.01L7.4 16.6M16.6 7.4L18.01 5.99M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -207,11 +218,11 @@
                             </svg>
                         </span>
                     </button>
-                    <a href="#contacto" class="button button--primary">Iniciar Sesion</a>
+                    <a href="#contacto" class="button button--primary">Iniciar Sesión</a>
                 </div>
 
                 <div class="site-header__mobile-actions">
-                    <button type="button" class="theme-toggle js-theme-toggle" aria-label="Cambiar tema" aria-pressed="false">
+                    <button type="button" class="theme-toggle js-theme-toggle" aria-label="Cambiar a modo oscuro" aria-pressed="false">
                         <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
                             <svg viewBox="0 0 24 24" class="theme-toggle__svg" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 3.5V5.5M12 18.5V20.5M5.99 5.99L7.4 7.4M16.6 16.6L18.01 18.01M3.5 12H5.5M18.5 12H20.5M5.99 18.01L7.4 16.6M16.6 7.4L18.01 5.99M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -223,7 +234,7 @@
                             </svg>
                         </span>
                     </button>
-                    <button type="button" class="menu-toggle js-menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav-panel">
+                    <button type="button" class="menu-toggle js-menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-nav-panel">
                         <span></span><span></span><span></span>
                     </button>
                 </div>
@@ -236,7 +247,7 @@
                             <a href="{{ $item === 'Contacto' ? '#contacto' : '#cursos' }}" class="site-header__mobile-link">{{ $item }}</a>
                         @endforeach
                     </nav>
-                    <a href="#contacto" class="button button--primary button--full">Iniciar Sesion</a>
+                    <a href="#contacto" class="button button--primary button--full">Iniciar Sesión</a>
                 </div>
             </div>
         </header>
@@ -245,22 +256,22 @@
             <div class="hero__overlay" aria-hidden="true"></div>
             <div class="container hero__inner">
                 <div class="hero__content">
-                    <span class="hero__eyebrow">Formacion Continua</span>
-                    <h1 class="hero__title">Cursos de Psicologia con Certificado en 2026</h1>
+                    <span class="hero__eyebrow">Formación Continua</span>
+                    <h1 class="hero__title">Cursos de Psicología con Certificado en 2026</h1>
                     <p class="hero__text">Vive la mejor experiencia de aprendizaje y potencia tus conocimientos a traves de nuestros cursos y diplomados.</p>
                     <div class="hero__actions">
                         <a href="#cursos" class="button button--light">Explorar cursos</a>
-                        <a href="#contacto" class="button button--outline-light">Solicitar informacion</a>
+                        <a href="#contacto" class="button button--outline-light">Solicitar información</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="container catalog-layout" aria-label="Catalogo de cursos">
+        <section class="container catalog-layout" aria-label="Catálogo de cursos">
             <aside class="filters" aria-labelledby="categorias-heading">
                 <div class="filters__panel">
                     <p class="filters__eyebrow">Explora</p>
-                    <h2 id="categorias-heading" class="filters__title">Cursos que te permitiran potenciar tu carrera.</h2>
+                    <h2 id="categorias-heading" class="filters__title">Cursos que te permitirán potenciar tu carrera.</h2>
                     <div class="filters__list" role="group" aria-label="Filtrar cursos por categoria">
                         @foreach ($categories as $category)
                             <button
@@ -268,7 +279,7 @@
                                 class="filters__chip {{ $loop->first ? 'is-active' : '' }}"
                                 data-category="{{ $category }}"
                                 aria-pressed="{{ $loop->first ? 'true' : 'false' }}"
-                                aria-current="{{ $loop->first ? 'page' : 'false' }}"
+                                aria-current="{{ $loop->first ? 'page' : '' }}"
                             >
                                 <span>{{ $category }}</span>
                             </button>
@@ -280,8 +291,8 @@
             <section id="cursos" class="courses" aria-labelledby="cursos-heading">
                 <div class="courses__header">
                     <div>
-                        <h2 id="cursos-heading" class="courses__title">Catalogo destacado</h2>
-                        <p class="courses__subtitle"><span id="courses-count">{{ count($courses) }}</span> cursos disponibles con enfoque practico y docentes especializados.</p>
+                        <h2 id="cursos-heading" class="courses__title">Catálogo destacado</h2>
+                        <p class="courses__subtitle"><span id="courses-count">{{ count($courses) }}</span> cursos disponibles con enfoque práctico y docentes especializados.</p>
                     </div>
 
                     <div class="sort js-sort">
@@ -294,7 +305,7 @@
                         </button>
                         <div id="sort-options-list" class="sort__options" role="listbox" aria-label="Opciones de orden" aria-hidden="true">
                             @foreach ($sortOptions as $option)
-                                <button type="button" class="sort__option js-sort-option" data-sort="{{ $option }}" role="option" aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ $option }}</button>
+                                <button type="button" class="sort__option js-sort-option" data-sort="{{ $option }}" role="option" tabindex="{{ $loop->first ? '0' : '-1' }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ $option }}</button>
                             @endforeach
                         </div>
                     </div>
@@ -333,17 +344,17 @@
                                         <p class="course-card__price course-card__price--old">${{ number_format($course['original_price'], 0, ',', '.') }}</p>
                                         <p class="course-card__price course-card__price--current">${{ number_format($course['price'], 0, ',', '.') }}</p>
                                     </div>
-                                    <a href="#" class="button button--primary button--small">Ver curso</a>
+                                    <a href="#" class="button button--primary button--small" aria-label="Ver detalles del curso {{ $course['title'] }}">Ver curso</a>
                                 </div>
                             </div>
                         </article>
                     @endforeach
                 </div>
 
-                <nav class="pagination js-pagination" aria-label="Paginacion de cursos">
-                    <button type="button" class="pagination__btn js-page-prev">Anterior</button>
+                <nav class="pagination js-pagination" aria-label="Paginación de cursos">
+                    <button type="button" class="pagination__btn js-page-prev" aria-label="Ir a la página anterior">Anterior</button>
                     <div class="pagination__numbers js-page-numbers"></div>
-                    <button type="button" class="pagination__btn js-page-next">Siguiente</button>
+                    <button type="button" class="pagination__btn js-page-next" aria-label="Ir a la página siguiente">Siguiente</button>
                 </nav>
             </section>
         </section>
@@ -352,16 +363,16 @@
             <section id="contacto" class="contact" aria-labelledby="contacto-heading">
                 <div class="contact__layout">
                     <div>
-                        <h2 id="contacto-heading" class="contact__title">Hablemos sobre tu proximo curso</h2>
-                        <p class="contact__text">Si necesitas orientacion para elegir un programa, deja tus datos y te escribiremos con recomendaciones segun tu perfil profesional.</p>
+                        <h2 id="contacto-heading" class="contact__title">Hablemos sobre tu próximo curso</h2>
+                        <p class="contact__text">Si necesitas orientación para elegir un programa, deja tus datos y te escribiremos con recomendaciones según tu perfil profesional.</p>
                         <div class="contact__notes">
-                            <p class="contact__note">Respuesta estimada: dentro de 24 horas habiles.</p>
-                            <p class="contact__note">Modalidades disponibles: online asincronico, clases en vivo y talleres presenciales.</p>
+                            <p class="contact__note">Respuesta estimada: dentro de 24 horas hábiles.</p>
+                            <p class="contact__note">Modalidades disponibles: online asincrónico, clases en vivo y talleres presenciales.</p>
                         </div>
                     </div>
 
                     <form id="contact-form" class="contact-form" novalidate>
-                        <div id="form-success" class="contact-form__success" role="status" hidden>Tu mensaje fue enviado correctamente. Te contactaremos pronto.</div>
+                        <div id="form-success" class="contact-form__success" role="status" aria-live="polite" hidden>Tu mensaje fue enviado correctamente. Te contactaremos pronto.</div>
 
                         <div class="contact-form__field">
                             <label for="name">Nombre</label>
@@ -391,7 +402,7 @@
             <div class="container site-footer__inner">
                 <div>
                     <img src="{{ asset('logo-adipa.svg') }}" alt="ADIPA" width="110" height="21">
-                    <p class="site-footer__description">Formacion aplicada para profesionales que buscan especializarse con criterios actuales y experiencia docente relevante.</p>
+                    <p class="site-footer__description">Formación aplicada para profesionales que buscan especializarse con criterios actuales y experiencia docente relevante.</p>
                 </div>
 
                 <div class="site-footer__columns">
