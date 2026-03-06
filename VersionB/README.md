@@ -12,9 +12,16 @@ composer install
 npm install
 cp .env.example .env
 php artisan key:generate
+php artisan config:clear
 ```
 
 Si usas Herd u otro manejador local, puedes reemplazar `php` por el binario que corresponda a tu entorno.
+
+Si vas a publicar en una subcarpeta (por ejemplo `https://dominio.com/adipa`), define en `.env`:
+
+```env
+APP_BASE_PATH=/adipa
+```
 
 ## Comandos para ejecutar en desarrollo
 
